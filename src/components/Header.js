@@ -8,6 +8,8 @@ import Menu from '@mui/material/Menu'
 import MenuItem from '@mui/material/MenuItem'
 import Badge from '@mui/material/Badge';
 import { CartState } from '../context/Context'
+import CartProduct from './CartProduct'
+import {useNavigate} from 'react-router-dom';
 
 
 
@@ -33,8 +35,7 @@ const open = Boolean(anchorEl);
 
 const {state: {cart}} = CartState();
 
-
-
+const navigate = useNavigate();
 
   return (
     <div>
@@ -44,9 +45,9 @@ const {state: {cart}} = CartState();
     <InputBase type='text' style={searchStyle} placeholder='SEARCH PRODUCTS' size='medium' />
         <Toolbar>
         
-            <Button variant='text' color='inherit'>Home</Button>
+            <Button variant='text' color='inherit' onClick={()=>navigate('/')} >Home</Button>
             <div>
-            <Badge badgeContent={cart.length} color="primary">
+            <Badge badgeContent={cart.length} color="secondary">
             <Button id='cart-button' onClick={(event)=>handleClick(event)} variant='text' color='inherit' 
             aria-controls={open ? 'cart-items' : undefined} 
             aria-haspopup='true'
@@ -61,10 +62,17 @@ const {state: {cart}} = CartState();
                 'aria-labelledby': 'cart-button'
             }}
             onClose={handleClose}
+            // sx={{width: "30vw"}}
+            
             >
-           <MenuItem >Profile</MenuItem>
-           <MenuItem >My account</MenuItem>
-           <MenuItem >Logout</MenuItem>
+            {
+              cart.length === 0 ? (<MenuItem>Cart is empty</MenuItem>) : ( cart.map((item) => {
+              return <CartProduct key={item.id} item={item} />
+            }))
+              
+             }
+           
+           <MenuItem ><Button onClick={()=>navigate('/cart')}  variant='contained' >Go to Cart</Button></MenuItem>
             </Menu>
 
             </div>
@@ -77,3 +85,5 @@ const {state: {cart}} = CartState();
 }
 
 export default Header
+
+

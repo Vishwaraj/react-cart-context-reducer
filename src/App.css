@@ -21,3 +21,52 @@
   gap: 3rem;
   margin-bottom: 5rem;
 }
+
+.cart-product {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  margin-bottom: 1rem;
+  align-items: center;
+}
+
+.cart-product > img {
+  width: 6vw;
+}
+
+.cart-page-product {
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+  align-items: center;
+}
+
+.cart-page-product > img {
+  width: 10vw;
+}
+
+.cart-page {
+  margin-top: 8rem;
+  margin-left: 7rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin-bottom: 4rem;
+}
+
+.cart-page-with-total {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-right: 4rem;
+}
+
+.cart-total {
+  margin-top: 10rem;
+  margin-right: 10rem;
+  background-color: beige;
+  height: 100%;
+  padding: 1rem 2rem 1rem 2rem;
+}
